@@ -96,8 +96,8 @@ export interface PotaRefLogView {
 	parkType: string;
 	parkInactive: boolean;
 	parkArea: number;
-	longitude?: number;
-	latitude?: number;
+	longitude: number;
+	latitude: number;
 	maidenhead: Maidenhead;
 	attempts?: number;
 	activations?: number;
@@ -127,8 +127,8 @@ export interface PotaSearchView {
 	nameJ: string;
 	locid: string[];
 	area: number;
-	lon?: number;
-	lat?: number;
+	lon: number;
+	lat: number;
 	atmpt?: number;
 	act?: number;
 	date?: string;

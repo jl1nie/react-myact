@@ -36,18 +36,11 @@ const useFetchMarkers = (bounds: L.LatLngBounds | null, zoomLevel: number) => {
       // 四隅の座標をAPIリクエスト用に準備
       const se = bounds.getSouthWest();
       const nw = bounds.getNorthEast();
-
-      let elev = 4000;
-      if (zoomLevel > 12) {
-        elev = 0;
-      } else if (zoomLevel > 9) {
-        elev = 800;
-      } else if (zoomLevel > 8) {
-        elev = 1000;
-      } else if (zoomLevel > 6) {
-        elev = 1500;
-      };
-
+      const elev = zoomLevel > 12 ? 0
+        : zoomLevel > 9 ? 800
+          : zoomLevel > 8 ? 1000
+            : zoomLevel > 6 ? 1500
+              : 4000;
       const api = apiUrl + `?min_elev=${elev}&min_lon=${se.lng}&min_lat=${se.lat}&max_lon=${nw.lng}&max_lat=${nw.lat}`;
 
       // Axiosを使用したAPIリクエスト
@@ -64,7 +57,7 @@ const useFetchMarkers = (bounds: L.LatLngBounds | null, zoomLevel: number) => {
   }, [bounds]);
 
   return { sotaMarkers, potaMarkers };
-};
+}
 
 // MapComponentをもっとスッキリ書いちゃう
 const MapComponent: React.FC = () => {

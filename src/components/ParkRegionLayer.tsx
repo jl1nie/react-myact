@@ -42,8 +42,8 @@ const ParkRegionLayer: React.FC<ParkRegionLayerProps> = ({ url }) => {
                     fillOpacity: 0.3
                 };
             },
-            onEachFeature: function (feature, layer) {
-                layer.on('click', function (e) {
+            onEachFeature: function (feature: any, layer: any) {
+                layer.on('click', function (e: any) {
                     const latlng = e.latlng;
                     // 公園クリック時の処理
                     console.log('Park clicked:', {

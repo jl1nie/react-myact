@@ -38,19 +38,14 @@ const useFetchMarkers = (bounds: L.LatLngBounds | null, zoomLevel: number) => {
       const nw = bounds.getNorthEast();
 
       let elev = 4000;
-      let area = 30;
       if (zoomLevel > 12) {
         elev = 0;
-        area = 0;
       } else if (zoomLevel > 9) {
         elev = 800;
-        area = 1;
       } else if (zoomLevel > 8) {
         elev = 1000;
-        area = 10;
       } else if (zoomLevel > 6) {
         elev = 1500;
-        area = 20
       };
 
       const api = apiUrl + `?min_elev=${elev}&min_lon=${se.lng}&min_lat=${se.lat}&max_lon=${nw.lng}&max_lat=${nw.lat}`;
